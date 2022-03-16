@@ -1,0 +1,24 @@
+[
+    {
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "secretOptions": null,
+            "options": {
+                "awslogs-group": "/ecs/${name}",
+                "awslogs-region": "us-east-1",
+                "awslogs-create-group": "true",
+                "awslogs-stream-prefix": "fargate"
+            }
+        },
+        "portMappings": [
+            {
+                "hostPort": ${containerPort},
+                "protocol": "tcp",
+                "containerPort": ${containerPort}
+            }
+        ],
+        "name": "httpd",
+        "image": "httpd:2.4",
+        "essential": true
+    }
+]
